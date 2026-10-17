@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd
+                        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <!--
+        Added the entity RateDetails.
+    -->
+    <changeSet id="20261017012320-1" author="jhipster">
+        <createTable tableName="rate_details">
+            <column name="id" type="bigint">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="tenant_id" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="data_overage_rate" type="decimal(32,12)" remarks="numeric(32,14)">
+                <constraints nullable="true" />
+            </column>
+            <column name="data_overage_rate_unit" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="sms_mo_overage_rate" type="decimal(32,12)" remarks="numeric(32,5)">
+                <constraints nullable="true" />
+            </column>
+            <column name="sms_mo_overage_rate_unit" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="sms_mt_overage_rate" type="decimal(32,12)" remarks="numeric(32,5)">
+                <constraints nullable="true" />
+            </column>
+            <column name="sms_mt_overage_rate_unit" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="voice_mo_overage_rate" type="decimal(32,12)" remarks="numeric(32,5)">
+                <constraints nullable="true" />
+            </column>
+            <column name="voice_mo_overage_rate_unit" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="voice_mt_overage_rate" type="decimal(32,12)" remarks="numeric(32,5)">
+                <constraints nullable="true" />
+            </column>
+            <column name="voice_mt_overage_rate_unit" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="is_default" type="boolean">
+                <constraints nullable="true" />
+            </column>
+            <column name="data_overage_rate_unit_factor" type="decimal(32,12)" remarks="numeric(21,2)">
+                <constraints nullable="true" />
+            </column>
+            <column name="sms_mo_overage_rate_unit_factor" type="decimal(32,12)" remarks="numeric(21,2)">
+                <constraints nullable="true" />
+            </column>
+            <column name="sms_mt_overage_rate_unit_factor" type="decimal(32,12)" remarks="numeric(21,2)">
+                <constraints nullable="true" />
+            </column>
+            <column name="voice_mo_overage_rate_unit_factor" type="decimal(32,12)" remarks="numeric(21,2)">
+                <constraints nullable="true" />
+            </column>
+            <column name="voice_mt_overage_rate_unit_factor" type="decimal(32,12)" remarks="numeric(21,2)">
+                <constraints nullable="true" />
+            </column>
+            <column name="created_date" type="${datetimeType}">
+                <constraints nullable="true" />
+            </column>
+            <column name="modified_date" type="${datetimeType}">
+                <constraints nullable="true" />
+            </column>
+            <column name="orig_zone_label_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+            <column name="dest_zone_label_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+            <column name="rating_group_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+            <column name="time_slot_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+            <column name="rateplan_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+            <column name="service_list_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+            <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here -->
+        </createTable>
+        <dropDefaultValue tableName="rate_details" columnName="created_date" columnDataType="${datetimeType}"/>
+        <dropDefaultValue tableName="rate_details" columnName="modified_date" columnDataType="${datetimeType}"/>
+    </changeSet>
+
+    <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here -->
+
+    <!--
+        Load sample data generated with Faker.js
+        - This data can be easily edited using a CSV editor (or even MS Excel) and
+          is located in the 'src/main/resources/config/liquibase/fake-data' directory
+        - By default this data is applied when running with the JHipster 'dev' profile.
+          This can be customized by adding or removing 'faker' in the 'spring.liquibase.contexts'
+          Spring Boot configuration key.
+    -->
+    <changeSet id="20261017012320-1-data" author="jhipster" context="faker">
+        <loadData
+                  file="../fake-data/rate_details.csv"
+                  relativeToChangelogFile="true"
+                  separator=";"
+                  tableName="rate_details"
+                  usePreparedStatements="true">
+            <column name="id" type="numeric"/>
+            <column name="tenant_id" type="string"/>
+            <column name="data_overage_rate" type="numeric"/>
+            <column name="data_overage_rate_unit" type="string"/>
+            <column name="sms_mo_overage_rate" type="numeric"/>
+            <column name="sms_mo_overage_rate_unit" type="string"/>
+            <column name="sms_mt_overage_rate" type="numeric"/>
+            <column name="sms_mt_overage_rate_unit" type="string"/>
+            <column name="voice_mo_overage_rate" type="numeric"/>
+            <column name="voice_mo_overage_rate_unit" type="string"/>
+            <column name="voice_mt_overage_rate" type="numeric"/>
+            <column name="voice_mt_overage_rate_unit" type="string"/>
+            <column name="is_default" type="boolean"/>
+            <column name="data_overage_rate_unit_factor" type="numeric"/>
+            <column name="sms_mo_overage_rate_unit_factor" type="numeric"/>
+            <column name="sms_mt_overage_rate_unit_factor" type="numeric"/>
+            <column name="voice_mo_overage_rate_unit_factor" type="numeric"/>
+            <column name="voice_mt_overage_rate_unit_factor" type="numeric"/>
+            <column name="created_date" type="date"/>
+            <column name="modified_date" type="date"/>
+            <!-- jhipster-needle-liquibase-add-loadcolumn - JHipster (and/or extensions) can add load columns here -->
+        </loadData>
+    </changeSet>
+</databaseChangeLog>

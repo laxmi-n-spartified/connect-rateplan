@@ -1,0 +1,51 @@
+{
+  "annotations": {
+    "changelogDate": "20261017012302"
+  },
+  "applications": ["*"],
+  "clientRootFolder": "connectRateplan",
+  "databaseType": "sql",
+  "fields": [
+    {
+      "fieldName": "countryCode",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "countryName",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "255"
+    },
+    {
+      "fieldName": "iso3166Code2",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "255"
+    },
+    {
+      "fieldName": "iso3166Code3",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "255"
+    },
+    {
+      "fieldName": "createdDate",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "modifiedDate",
+      "fieldType": "Instant"
+    }
+  ],
+  "microserviceName": "connectRateplan",
+  "name": "Country",
+  "relationships": [
+    {
+      "otherEntityName": "currency",
+      "relationshipName": "currency",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "searchEngine": "no"
+}

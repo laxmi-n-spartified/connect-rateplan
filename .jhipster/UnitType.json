@@ -1,0 +1,38 @@
+{
+  "annotations": {
+    "changelogDate": "20261017012308"
+  },
+  "applications": ["*"],
+  "clientRootFolder": "connectRateplan",
+  "databaseType": "sql",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "255"
+    },
+    {
+      "fieldName": "conversionFactor",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "lowestUnit",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "255"
+    },
+    {
+      "fieldName": "createdDate",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "modifiedDate",
+      "fieldType": "Instant"
+    }
+  ],
+  "microserviceName": "connectRateplan",
+  "name": "UnitType",
+  "relationships": [],
+  "searchEngine": "no"
+}

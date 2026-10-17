@@ -1,0 +1,57 @@
+{
+  "annotations": {
+    "changelogDate": "20261017012312"
+  },
+  "applications": ["*"],
+  "clientRootFolder": "connectRateplan",
+  "databaseType": "sql",
+  "fields": [
+    {
+      "fieldName": "tenantId",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "255"
+    },
+    {
+      "fieldName": "name",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "255"
+    },
+    {
+      "fieldName": "description",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "255"
+    },
+    {
+      "fieldName": "isRestOfWorld",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "status",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "255"
+    },
+    {
+      "fieldName": "createdDate",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "modifiedDate",
+      "fieldType": "Instant"
+    }
+  ],
+  "microserviceName": "connectRateplan",
+  "name": "ZoneLabel",
+  "relationships": [
+    {
+      "otherEntityName": "networkIdentity",
+      "relationshipName": "networkIdentity",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-many"
+    }
+  ],
+  "searchEngine": "no"
+}

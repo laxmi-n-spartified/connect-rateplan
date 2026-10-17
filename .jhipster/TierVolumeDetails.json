@@ -1,0 +1,88 @@
+{
+  "annotations": {
+    "changelogDate": "20261017012321"
+  },
+  "applications": ["*"],
+  "clientRootFolder": "connectRateplan",
+  "databaseType": "sql",
+  "fields": [
+    {
+      "documentation": "numeric(32,5)",
+      "fieldName": "mrc",
+      "fieldType": "BigDecimal"
+    },
+    {
+      "fieldName": "ratingTypeMrc",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "255"
+    },
+    {
+      "fieldName": "ratingTypeUsage",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "255"
+    },
+    {
+      "fieldName": "tenantId",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "255"
+    },
+    {
+      "fieldName": "tierLimit",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "255"
+    },
+    {
+      "fieldName": "createdDate",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "modifiedDate",
+      "fieldType": "Instant"
+    }
+  ],
+  "microserviceName": "connectRateplan",
+  "name": "TierVolumeDetails",
+  "relationships": [
+    {
+      "otherEntityName": "zoneLabel",
+      "relationshipName": "origZoneLabel",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "zoneLabel",
+      "relationshipName": "destZoneLabel",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "rateDetails",
+      "relationshipName": "rateDetail",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "rateplan",
+      "relationshipName": "rateplan",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "ratingGroup",
+      "relationshipName": "ratingGroup",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "serviceList",
+      "relationshipName": "serviceList",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "searchEngine": "no"
+}

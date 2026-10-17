@@ -1,0 +1,47 @@
+{
+  "annotations": {
+    "changelogDate": "20261017012314"
+  },
+  "applications": ["*"],
+  "clientRootFolder": "connectRateplan",
+  "databaseType": "sql",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "255"
+    },
+    {
+      "fieldName": "timeSlotStart",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "255"
+    },
+    {
+      "fieldName": "timeSlotEnd",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "255"
+    },
+    {
+      "fieldName": "createdDate",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "modifiedDate",
+      "fieldType": "Instant"
+    }
+  ],
+  "microserviceName": "connectRateplan",
+  "name": "TimeSlot",
+  "relationships": [
+    {
+      "otherEntityName": "timeInterval",
+      "relationshipName": "timeInterval",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "searchEngine": "no"
+}

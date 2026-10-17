@@ -1,0 +1,149 @@
+{
+  "annotations": {
+    "changelogDate": "20261017012320"
+  },
+  "applications": ["*"],
+  "clientRootFolder": "connectRateplan",
+  "databaseType": "sql",
+  "fields": [
+    {
+      "fieldName": "tenantId",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "255"
+    },
+    {
+      "documentation": "numeric(32,14)",
+      "fieldName": "dataOverageRate",
+      "fieldType": "BigDecimal"
+    },
+    {
+      "fieldName": "dataOverageRateUnit",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "255"
+    },
+    {
+      "documentation": "numeric(32,5)",
+      "fieldName": "smsMoOverageRate",
+      "fieldType": "BigDecimal"
+    },
+    {
+      "fieldName": "smsMoOverageRateUnit",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "255"
+    },
+    {
+      "documentation": "numeric(32,5)",
+      "fieldName": "smsMtOverageRate",
+      "fieldType": "BigDecimal"
+    },
+    {
+      "fieldName": "smsMtOverageRateUnit",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "255"
+    },
+    {
+      "documentation": "numeric(32,5)",
+      "fieldName": "voiceMoOverageRate",
+      "fieldType": "BigDecimal"
+    },
+    {
+      "fieldName": "voiceMoOverageRateUnit",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "255"
+    },
+    {
+      "documentation": "numeric(32,5)",
+      "fieldName": "voiceMtOverageRate",
+      "fieldType": "BigDecimal"
+    },
+    {
+      "fieldName": "voiceMtOverageRateUnit",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "255"
+    },
+    {
+      "fieldName": "isDefault",
+      "fieldType": "Boolean"
+    },
+    {
+      "documentation": "numeric(21,2)",
+      "fieldName": "dataOverageRateUnitFactor",
+      "fieldType": "BigDecimal"
+    },
+    {
+      "documentation": "numeric(21,2)",
+      "fieldName": "smsMoOverageRateUnitFactor",
+      "fieldType": "BigDecimal"
+    },
+    {
+      "documentation": "numeric(21,2)",
+      "fieldName": "smsMtOverageRateUnitFactor",
+      "fieldType": "BigDecimal"
+    },
+    {
+      "documentation": "numeric(21,2)",
+      "fieldName": "voiceMoOverageRateUnitFactor",
+      "fieldType": "BigDecimal"
+    },
+    {
+      "documentation": "numeric(21,2)",
+      "fieldName": "voiceMtOverageRateUnitFactor",
+      "fieldType": "BigDecimal"
+    },
+    {
+      "fieldName": "createdDate",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "modifiedDate",
+      "fieldType": "Instant"
+    }
+  ],
+  "microserviceName": "connectRateplan",
+  "name": "RateDetails",
+  "relationships": [
+    {
+      "otherEntityName": "zoneLabel",
+      "relationshipName": "origZoneLabel",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "zoneLabel",
+      "relationshipName": "destZoneLabel",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "ratingGroup",
+      "relationshipName": "ratingGroup",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "timeSlot",
+      "relationshipName": "timeSlot",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "rateplan",
+      "relationshipName": "rateplan",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "serviceList",
+      "relationshipName": "serviceList",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "searchEngine": "no"
+}

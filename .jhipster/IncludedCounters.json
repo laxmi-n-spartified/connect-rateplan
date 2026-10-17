@@ -1,0 +1,137 @@
+{
+  "annotations": {
+    "changelogDate": "20261017012319"
+  },
+  "applications": ["*"],
+  "clientRootFolder": "connectRateplan",
+  "databaseType": "sql",
+  "fields": [
+    {
+      "fieldName": "counterData",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "counterSmsMo",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "counterSmsMt",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "counterVoiceMo",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "counterVoiceMt",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "rolloverData",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "rolloverDataDuration",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "rolloverVoiceMo",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "rolloverVoiceMoDuration",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "rolloverSmsMo",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "rolloverSmsMoDuration",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "counterDataUnit",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "255"
+    },
+    {
+      "fieldName": "counterSmsMoUnit",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "255"
+    },
+    {
+      "fieldName": "counterSmsMtUnit",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "255"
+    },
+    {
+      "fieldName": "counterVoiceMoUnit",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "255"
+    },
+    {
+      "fieldName": "counterVoiceMtUnit",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "255"
+    },
+    {
+      "fieldName": "renewOnQuotaExhaust",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "createdDate",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "modifiedDate",
+      "fieldType": "Instant"
+    }
+  ],
+  "microserviceName": "connectRateplan",
+  "name": "IncludedCounters",
+  "relationships": [
+    {
+      "otherEntityName": "zoneLabel",
+      "relationshipName": "origZoneLabel",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "zoneLabel",
+      "relationshipName": "destZoneLabel",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "ratingGroup",
+      "relationshipName": "ratingGroup",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "rateplan",
+      "relationshipName": "rateplan",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "serviceList",
+      "relationshipName": "serviceList",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "timeSlot",
+      "relationshipName": "timeSlot",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "searchEngine": "no"
+}

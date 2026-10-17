@@ -1,0 +1,345 @@
+// Rate plan model derived from the billing schema in dump-elektradb-202610121308.sql.
+// billing_address is not included, and account_billing_profile has no billaddress reference.
+// unit_type and billing_cycle have no tenant_id.
+// Every entity has createdDate and modifiedDate (source created_on / modified_on columns).
+// BigDecimal comments record the source numeric(precision, scale).
+// JHipster Liquibase maps BigDecimal to decimal(21,2); keep the commented precision when editing the changelog.
+// Zone labels are a shared catalog. A rate plan reaches a zone label only through zone_label_priority.
+// rate_details, included_counters, and tier_volume_details store origZoneLabel and destZoneLabel directly.
+// destZoneLabel is optional. A data-service row leaves it null.
+// timeSlot is optional on rate_details and included_counters. A row can apply to every slot in the interval.
+// timeInterval is optional on rateplan. A plan can be saved with no time interval.
+// Many-to-many links are unidirectional: Rateplan owns rating groups, ZoneLabel owns network identities.
+
+entity Currency {
+  currencyName String maxlength(255)
+  currencyCode String maxlength(255)
+  createdDate Instant
+  modifiedDate Instant
+}
+
+entity Country {
+  countryCode Integer
+  countryName String maxlength(255)
+  iso3166Code2 String maxlength(255)
+  iso3166Code3 String maxlength(255)
+  createdDate Instant
+  modifiedDate Instant
+}
+
+entity TadigCode {
+  tadig String maxlength(255)
+  createdDate Instant
+  modifiedDate Instant
+}
+
+entity NetworkIdentity {
+  mcc String maxlength(255)
+  mnc String maxlength(255)
+  operator String maxlength(255)
+  createdDate Instant
+  modifiedDate Instant
+}
+
+entity Lifecycle {
+  name String maxlength(255)
+  createdDate Instant
+  modifiedDate Instant
+}
+
+entity States {
+  lcStateName String maxlength(255)
+  createdDate Instant
+  modifiedDate Instant
+}
+
+entity StateTransitions {
+  name String maxlength(255)
+  fromState String maxlength(255)
+  toState String maxlength(255)
+  isAllowed Boolean
+  createdDate Instant
+  modifiedDate Instant
+}
+
+entity UnitType {
+  name String maxlength(255)
+  conversionFactor Integer
+  lowestUnit String maxlength(255)
+  createdDate Instant
+  modifiedDate Instant
+}
+
+entity BillingCycle {
+  billCycleDate Integer
+  billCycleName String maxlength(255)
+  billCycleDuration String maxlength(255)
+  createdDate Instant
+  modifiedDate Instant
+}
+
+entity AccountBillingProfile {
+  tenantId String maxlength(255) required
+  mrcChargeType String maxlength(255)
+  ratingType String maxlength(255)
+  /** numeric(21,2) */
+  creditLimit BigDecimal
+  mrcRatingType String maxlength(255)
+  billable Boolean
+  fanId String maxlength(255)
+  extId String maxlength(255)
+  accountPrefix String maxlength(255)
+  saartId String maxlength(6)
+  createdDate Instant
+  modifiedDate Instant
+}
+
+entity MasterOfferId {
+  offerId String maxlength(255)
+  offerName String maxlength(255)
+  createdDate Instant
+  modifiedDate Instant
+}
+
+entity ZoneLabel {
+  tenantId String maxlength(255)
+  name String maxlength(255)
+  description String maxlength(255)
+  isRestOfWorld Boolean
+  status String maxlength(255)
+  createdDate Instant
+  modifiedDate Instant
+}
+
+entity TimeInterval {
+  tenantId String maxlength(255)
+  name String maxlength(255)
+  lastUpdated Instant
+  isAssignedRateplan Boolean
+  createdDate Instant
+  modifiedDate Instant
+}
+
+entity TimeSlot {
+  name String maxlength(255)
+  timeSlotStart String maxlength(255)
+  timeSlotEnd String maxlength(255)
+  createdDate Instant
+  modifiedDate Instant
+}
+
+entity RatingGroup {
+  tenantId String maxlength(255)
+  rgValue String maxlength(255)
+  isDefault Boolean
+  createdDate Instant
+  modifiedDate Instant
+}
+
+entity Rateplan {
+  tenantId String maxlength(255)
+  name String maxlength(255) required unique
+  organizationName String maxlength(255)
+  /** numeric(21,5) */
+  activationFee BigDecimal
+  /** numeric(21,5) */
+  networkAccessFee BigDecimal
+  /** numeric(32,5) */
+  subscriptionFee BigDecimal
+  /** numeric(21,5) */
+  cancellationFee BigDecimal
+  /** numeric(21,5) */
+  additionalFees BigDecimal
+  /** numeric(21,5) */
+  reActivationFee BigDecimal
+  contractPeriod Integer
+  noticePeriod Integer
+  startDate LocalDate
+  endDate LocalDate
+  status String maxlength(255)
+  planType String maxlength(255)
+  version Integer
+  subscriptionType String maxlength(255)
+  includedTestData Long
+  includedTestSms Long
+  includedTestVoice Long
+  expiryDate LocalDate
+  trialDuration Integer
+  poolTariff String maxlength(255)
+  /** numeric(21,5) */
+  poolActivationFee BigDecimal
+  /** numeric(21,5) */
+  poolSubscriptionFee BigDecimal
+  roundingForData String maxlength(255)
+  roundingForVoice String maxlength(255)
+  includedTestDataUnit String maxlength(255)
+  includedTestSmsUnit String maxlength(255)
+  includedTestVoiceUnit String maxlength(255)
+  renewOnExpiry Boolean
+  tieredVolumeType String maxlength(255)
+  validityPeriod Integer
+  category String maxlength(255)
+  quotaProfileId Long
+  quotaProfileName String maxlength(255)
+  extId String maxlength(255)
+  /** numeric(21,5) */
+  fixedActiveFee BigDecimal
+  /** numeric(21,5) */
+  suspendFee BigDecimal
+  /** numeric(32,5) */
+  suspendedSimMrc BigDecimal
+  /** numeric(21,5) */
+  unsuspendFee BigDecimal
+  /** numeric(21,5) */
+  deactivationFee BigDecimal
+  createdDate Instant
+  modifiedDate Instant
+}
+
+entity RateplanLcStateModel {
+  rateplanName String maxlength(255)
+  tenantId String maxlength(255)
+  currentLcState String maxlength(255)
+  createdDate Instant
+  modifiedDate Instant
+}
+
+entity ServiceList {
+  tenantId String maxlength(255)
+  servicetype String maxlength(255)
+  createdDate Instant
+  modifiedDate Instant
+}
+
+entity IncludedCounters {
+  counterData Long
+  counterSmsMo Long
+  counterSmsMt Long
+  counterVoiceMo Long
+  counterVoiceMt Long
+  rolloverData Boolean
+  rolloverDataDuration Integer
+  rolloverVoiceMo Boolean
+  rolloverVoiceMoDuration Integer
+  rolloverSmsMo Boolean
+  rolloverSmsMoDuration Integer
+  counterDataUnit String maxlength(255)
+  counterSmsMoUnit String maxlength(255)
+  counterSmsMtUnit String maxlength(255)
+  counterVoiceMoUnit String maxlength(255)
+  counterVoiceMtUnit String maxlength(255)
+  renewOnQuotaExhaust Boolean
+  createdDate Instant
+  modifiedDate Instant
+}
+
+entity RateDetails {
+  tenantId String maxlength(255)
+  /** numeric(32,14) */
+  dataOverageRate BigDecimal
+  dataOverageRateUnit String maxlength(255)
+  /** numeric(32,5) */
+  smsMoOverageRate BigDecimal
+  smsMoOverageRateUnit String maxlength(255)
+  /** numeric(32,5) */
+  smsMtOverageRate BigDecimal
+  smsMtOverageRateUnit String maxlength(255)
+  /** numeric(32,5) */
+  voiceMoOverageRate BigDecimal
+  voiceMoOverageRateUnit String maxlength(255)
+  /** numeric(32,5) */
+  voiceMtOverageRate BigDecimal
+  voiceMtOverageRateUnit String maxlength(255)
+  isDefault Boolean
+  /** numeric(21,2) */
+  dataOverageRateUnitFactor BigDecimal
+  /** numeric(21,2) */
+  smsMoOverageRateUnitFactor BigDecimal
+  /** numeric(21,2) */
+  smsMtOverageRateUnitFactor BigDecimal
+  /** numeric(21,2) */
+  voiceMoOverageRateUnitFactor BigDecimal
+  /** numeric(21,2) */
+  voiceMtOverageRateUnitFactor BigDecimal
+  createdDate Instant
+  modifiedDate Instant
+}
+
+entity TierVolumeDetails {
+  /** numeric(32,5) */
+  mrc BigDecimal
+  ratingTypeMrc String maxlength(255)
+  ratingTypeUsage String maxlength(255)
+  tenantId String maxlength(255)
+  tierLimit String maxlength(255)
+  createdDate Instant
+  modifiedDate Instant
+}
+
+entity SgsnIpList {
+  sgsnIp String maxlength(255)
+  tenantId String maxlength(255)
+  createdDate Instant
+  modifiedDate Instant
+}
+
+entity SpecialNumber {
+  tenantId String maxlength(255)
+  inputNum Long
+  translatedNum Long
+  createdDate Instant
+  modifiedDate Instant
+}
+
+entity ZoneLabelPriority {
+  labelType String maxlength(255)
+  priority Integer
+  tenantId String maxlength(255)
+  createdDate Instant
+  modifiedDate Instant
+}
+
+relationship ManyToOne {
+  AccountBillingProfile{billCycle required} to BillingCycle
+  AccountBillingProfile{currency required} to Currency
+  Country{currency} to Currency
+  NetworkIdentity{country} to Country
+  NetworkIdentity{tadigCode} to TadigCode
+  StateTransitions{lifecycle} to Lifecycle
+  TimeSlot{timeInterval} to TimeInterval
+  Rateplan{lifecycle} to Lifecycle
+  Rateplan{timeInterval} to TimeInterval
+  RateplanLcStateModel{lifecycle} to Lifecycle
+  ServiceList{rateplan} to Rateplan
+  IncludedCounters{origZoneLabel} to ZoneLabel
+  IncludedCounters{destZoneLabel} to ZoneLabel
+  IncludedCounters{ratingGroup} to RatingGroup
+  IncludedCounters{rateplan} to Rateplan
+  IncludedCounters{serviceList} to ServiceList
+  IncludedCounters{timeSlot} to TimeSlot
+  RateDetails{origZoneLabel} to ZoneLabel
+  RateDetails{destZoneLabel} to ZoneLabel
+  RateDetails{ratingGroup} to RatingGroup
+  RateDetails{timeSlot} to TimeSlot
+  RateDetails{rateplan} to Rateplan
+  RateDetails{serviceList} to ServiceList
+  TierVolumeDetails{origZoneLabel} to ZoneLabel
+  TierVolumeDetails{destZoneLabel} to ZoneLabel
+  TierVolumeDetails{rateDetail} to RateDetails
+  TierVolumeDetails{rateplan} to Rateplan
+  TierVolumeDetails{ratingGroup} to RatingGroup
+  TierVolumeDetails{serviceList} to ServiceList
+  SgsnIpList{networkIdentity} to NetworkIdentity
+  SpecialNumber{zoneLabel} to ZoneLabel
+  ZoneLabelPriority{rateplan} to Rateplan
+  ZoneLabelPriority{zoneLabel} to ZoneLabel
+}
+
+relationship OneToOne {
+  RateplanLcStateModel{rateplan} to Rateplan
+}
+
+relationship ManyToMany {
+  Rateplan{ratingGroup} to RatingGroup
+  ZoneLabel{networkIdentity} to NetworkIdentity
+}

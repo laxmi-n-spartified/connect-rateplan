@@ -1,0 +1,254 @@
+{
+  "annotations": {
+    "changelogDate": "20261017012316"
+  },
+  "applications": ["*"],
+  "clientRootFolder": "connectRateplan",
+  "databaseType": "sql",
+  "fields": [
+    {
+      "fieldName": "tenantId",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "255"
+    },
+    {
+      "fieldName": "name",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength", "required", "unique"],
+      "fieldValidateRulesMaxlength": "255"
+    },
+    {
+      "fieldName": "organizationName",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "255"
+    },
+    {
+      "documentation": "numeric(21,5)",
+      "fieldName": "activationFee",
+      "fieldType": "BigDecimal"
+    },
+    {
+      "documentation": "numeric(21,5)",
+      "fieldName": "networkAccessFee",
+      "fieldType": "BigDecimal"
+    },
+    {
+      "documentation": "numeric(32,5)",
+      "fieldName": "subscriptionFee",
+      "fieldType": "BigDecimal"
+    },
+    {
+      "documentation": "numeric(21,5)",
+      "fieldName": "cancellationFee",
+      "fieldType": "BigDecimal"
+    },
+    {
+      "documentation": "numeric(21,5)",
+      "fieldName": "additionalFees",
+      "fieldType": "BigDecimal"
+    },
+    {
+      "documentation": "numeric(21,5)",
+      "fieldName": "reActivationFee",
+      "fieldType": "BigDecimal"
+    },
+    {
+      "fieldName": "contractPeriod",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "noticePeriod",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "startDate",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "endDate",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "status",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "255"
+    },
+    {
+      "fieldName": "planType",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "255"
+    },
+    {
+      "fieldName": "version",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "subscriptionType",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "255"
+    },
+    {
+      "fieldName": "includedTestData",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "includedTestSms",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "includedTestVoice",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "expiryDate",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "trialDuration",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "poolTariff",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "255"
+    },
+    {
+      "documentation": "numeric(21,5)",
+      "fieldName": "poolActivationFee",
+      "fieldType": "BigDecimal"
+    },
+    {
+      "documentation": "numeric(21,5)",
+      "fieldName": "poolSubscriptionFee",
+      "fieldType": "BigDecimal"
+    },
+    {
+      "fieldName": "roundingForData",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "255"
+    },
+    {
+      "fieldName": "roundingForVoice",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "255"
+    },
+    {
+      "fieldName": "includedTestDataUnit",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "255"
+    },
+    {
+      "fieldName": "includedTestSmsUnit",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "255"
+    },
+    {
+      "fieldName": "includedTestVoiceUnit",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "255"
+    },
+    {
+      "fieldName": "renewOnExpiry",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "tieredVolumeType",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "255"
+    },
+    {
+      "fieldName": "validityPeriod",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "category",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "255"
+    },
+    {
+      "fieldName": "quotaProfileId",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "quotaProfileName",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "255"
+    },
+    {
+      "fieldName": "extId",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "255"
+    },
+    {
+      "documentation": "numeric(21,5)",
+      "fieldName": "fixedActiveFee",
+      "fieldType": "BigDecimal"
+    },
+    {
+      "documentation": "numeric(21,5)",
+      "fieldName": "suspendFee",
+      "fieldType": "BigDecimal"
+    },
+    {
+      "documentation": "numeric(32,5)",
+      "fieldName": "suspendedSimMrc",
+      "fieldType": "BigDecimal"
+    },
+    {
+      "documentation": "numeric(21,5)",
+      "fieldName": "unsuspendFee",
+      "fieldType": "BigDecimal"
+    },
+    {
+      "documentation": "numeric(21,5)",
+      "fieldName": "deactivationFee",
+      "fieldType": "BigDecimal"
+    },
+    {
+      "fieldName": "createdDate",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "modifiedDate",
+      "fieldType": "Instant"
+    }
+  ],
+  "microserviceName": "connectRateplan",
+  "name": "Rateplan",
+  "relationships": [
+    {
+      "otherEntityName": "lifecycle",
+      "relationshipName": "lifecycle",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "timeInterval",
+      "relationshipName": "timeInterval",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "ratingGroup",
+      "relationshipName": "ratingGroup",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-many"
+    }
+  ],
+  "searchEngine": "no"
+}

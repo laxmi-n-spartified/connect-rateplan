@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd
+                        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+    <!--
+        Added the constraints for entity Rateplan.
+    -->
+    <changeSet id="20261017012316-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="lifecycle_id"
+                                 baseTableName="rateplan"
+                                 constraintName="fk_rateplan__lifecycle_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="lifecycle"
+                                 />
+
+        <addForeignKeyConstraint baseColumnNames="time_interval_id"
+                                 baseTableName="rateplan"
+                                 constraintName="fk_rateplan__time_interval_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="time_interval"
+                                 />
+
+        <addForeignKeyConstraint baseColumnNames="rateplan_id"
+                                 baseTableName="rel_rateplan__rating_group"
+                                 constraintName="fk_rel_rateplan__rating_group__rateplan_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="rateplan"
+                                 />
+
+        <addForeignKeyConstraint baseColumnNames="rating_group_id"
+                                 baseTableName="rel_rateplan__rating_group"
+                                 constraintName="fk_rel_rateplan__rating_group__rating_group_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="rating_group"
+                                 />
+    </changeSet>
+</databaseChangeLog>

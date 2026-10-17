@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd
+                        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+    <!--
+        Added the constraints for entity TierVolumeDetails.
+    -->
+    <changeSet id="20261017012321-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="orig_zone_label_id"
+                                 baseTableName="tier_volume_details"
+                                 constraintName="fk_tier_volume_details__orig_zone_label_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="zone_label"
+                                 />
+
+        <addForeignKeyConstraint baseColumnNames="dest_zone_label_id"
+                                 baseTableName="tier_volume_details"
+                                 constraintName="fk_tier_volume_details__dest_zone_label_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="zone_label"
+                                 />
+
+        <addForeignKeyConstraint baseColumnNames="rate_detail_id"
+                                 baseTableName="tier_volume_details"
+                                 constraintName="fk_tier_volume_details__rate_detail_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="rate_details"
+                                 />
+
+        <addForeignKeyConstraint baseColumnNames="rateplan_id"
+                                 baseTableName="tier_volume_details"
+                                 constraintName="fk_tier_volume_details__rateplan_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="rateplan"
+                                 />
+
+        <addForeignKeyConstraint baseColumnNames="rating_group_id"
+                                 baseTableName="tier_volume_details"
+                                 constraintName="fk_tier_volume_details__rating_group_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="rating_group"
+                                 />
+
+        <addForeignKeyConstraint baseColumnNames="service_list_id"
+                                 baseTableName="tier_volume_details"
+                                 constraintName="fk_tier_volume_details__service_list_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="service_list"
+                                 />
+    </changeSet>
+</databaseChangeLog>
